@@ -33,13 +33,13 @@ for pixels in pixel_width:
         Image_dist_list.append(Image_distance+num)
     else:
         print("WARNING! Distance is less than 45 km from target HLS")
-        
+       
 theta = np.linspace(0,45, num = 46)
 XY_distance = [[],[]]
+print (Image_distance)
 for i in theta:
     distance = xy_distance(i, Image_distance)
     XY_distance[0].append(distance[0])
     XY_distance[1].append(distance[1])
     
-
-
+print(XY_distance[1])

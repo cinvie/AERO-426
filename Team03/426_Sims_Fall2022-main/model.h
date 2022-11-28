@@ -53,3 +53,17 @@ public:
 		cout << "HeatTransferModel dt: " << dt_seconds << endl;
 	};
 };
+
+class SensorModel : public Model
+{
+public:
+	SensorModel(shared_ptr<Entity> _en) : Model(_en) {};
+	virtual void init() override
+	{
+
+	};
+	virtual void update(double dt_seconds) override
+	{
+		cout << "SensorModel dt: " << dt_seconds << endl;
+	};
+};
