@@ -26,13 +26,13 @@ pixel_width = np.linspace(50,500, num = 100)
 Image_dist_list = []
 Image_distance = 100000
 for pixels in pixel_width:
-    if Image_distance > 45000:
+    if Image_distance > 10000:
         percent_change = int((1 * pixels)/100)
         num = np.random.normal(-percent_change, percent_change)
         Image_distance = Position_Estimation(Focal_Length, image_width, pixels)
         Image_dist_list.append(Image_distance+num)
     else:
-        print("WARNING! Distance is less than 45 km from target HLS")
+        print("WARNING! Distance is less than 10 km from target HLS")
        
 theta = np.linspace(0,45, num = 46)
 XY_distance = [[],[]]

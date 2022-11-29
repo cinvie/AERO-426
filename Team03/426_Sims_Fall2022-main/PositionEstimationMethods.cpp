@@ -45,14 +45,14 @@ int main() {
 	int image_distance = 100000;
 
 	for (double pixels : pixel_width_arr) {
-		if (image_distance > 45000) {
+		if (image_distance > 10000) {
 			int percent_change = (int((1 * pixels) / 100));
 			double num = rand() % (percent_change + percent_change + 1) - percent_change;
 			image_distance = Position_Estimation(focal_length, image_width, pixels);
 			image_dist_list.push_back(image_distance + num);
 		}
 		else {
-			cout << "Warning! Distance is less than 45km from target HLS." << endl;
+			cout << "Warning! Distance is less than 10km from target HLS." << endl;
 		}
 	}
 
