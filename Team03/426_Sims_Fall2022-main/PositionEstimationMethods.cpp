@@ -8,10 +8,6 @@
 using namespace std;
 using namespace Eigen;
 
-int image_width = 48000;
-int pixel_width = 248;
-double focal_length = 543.45;
-
 double Position_Estimation(double focal_length, double real_image_width, double image_width_in_pixels) {
 	double distance = (real_image_width * focal_length) / image_width_in_pixels;
 	return distance;
@@ -40,32 +36,47 @@ vector<double> linspace(double init, double end, double num) {
 }
 
 int main() {
-	vector <double> pixel_width_arr = linspace(50.0, 500.0, 100);
+	srand(time(nullptr));
+
+	vector<double> pixel_width_arr = linspace(50.0, 500.0, 50);
 	vector<double> image_dist_list;
-	int image_distance = 100000;
 
-	for (double pixels : pixel_width_arr) {
-		if (image_distance > 10000) {
-			int percent_change = (int((1 * pixels) / 100));
-			double num = rand() % (percent_change + percent_change + 1) - percent_change;
-			image_distance = Position_Estimation(focal_length, image_width, pixels);
-			image_dist_list.push_back(image_distance + num);
-		}
-		else {
-			cout << "Warning! Distance is less than 10km from target HLS." << endl;
-		}
-	}
+	double image_width = 48000.0; // meters
+	double pixel_width = 248.0; // pixels
+	double focal_length = 543.45;  //mm
+	double theta = 25.0; //degrees
 
-	vector<double> theta = linspace(0.0, 45.0, 46);
+	double image_distance = 100000.0;
 
 	vector<vector<double>> XY_distance;
 	vector<double> X_distance;
 	vector<double> Y_distance;
 	XY_distance.push_back(X_distance);
 	XY_distance.push_back(Y_distance);
-	for (double i : theta) {
-		vector<double> distance = xy_distance(i, image_distance);
-		XY_distance[0].push_back(distance[0]);
-		XY_distance[1].push_back(distance[1]);
+
+	for (double pixels : pixel_width_arr) {
+		if (image_distance > 50000) {
+			double percent_change = (float((0.1 * pixels) / 100));
+			
+			//double num = rand() % (percent_change + percent_change + 1) - percent_change;
+			double num = (-percent_change) + (double)(rand()) / ((double)(RAND_MAX/(percent_change+percent_change))); // generate random number between +/- 0.1% of the pixel 
+			double pixels_num = pixels + num;
+			image_distance = Position_Estimation(focal_length, image_width, pixels_num);
+			vector<double> x_y_distance = xy_distance(theta, image_distance);
+
+			image_dist_list.push_back(image_distance);
+
+			cout << "Distance to HLS from target image: " << image_distance << "km" << endl;
+
+			XY_distance[0].push_back(x_y_distance[0]);
+			XY_distance[1].push_back(x_y_distance[1]);
+
+			cout << "Distance to HLS from target image (X Coordinate): " << x_y_distance[0] << endl;
+			cout << "Distance to HLS from target image (Y Coordinate): " << x_y_distance[1] << endl;
+			cout << endl;
+		}
+		else {
+			cout << "Warning! Distance is less than 50km from target HLS." << endl;
+		}
 	}
 }
