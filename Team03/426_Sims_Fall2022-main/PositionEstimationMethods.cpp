@@ -66,13 +66,13 @@ int main() {
 
 			image_dist_list.push_back(image_distance);
 
-			cout << "Distance to HLS from target image: " << image_distance << "km" << endl;
+			cout << "Distance to HLS from target image: " << image_distance << "m" << endl;
 
 			XY_distance[0].push_back(x_y_distance[0]);
 			XY_distance[1].push_back(x_y_distance[1]);
 
-			cout << "Distance to HLS from target image (X Coordinate): " << x_y_distance[0] << endl;
-			cout << "Distance to HLS from target image (Y Coordinate): " << x_y_distance[1] << endl;
+			cout << "Distance to HLS from target image (X Coordinate): " << x_y_distance[0] << "m" << endl;
+			cout << "Distance to HLS from target image (Y Coordinate): " << x_y_distance[1] << "m" << endl;
 			cout << endl;
 		}
 		else {
