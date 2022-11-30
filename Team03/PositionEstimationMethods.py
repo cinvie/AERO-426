@@ -34,7 +34,7 @@ Image_dist_list = []
 XY_distance = [[],[]]
 Image_distance = 100000
 for pixels in pixel_width:
-    if Image_distance > 50000:
+    if Image_distance > 15000:
         percent_change = float((0.1 * pixels)/100)
         num = round(random.uniform(-percent_change, percent_change),2)
         pixel_num = pixels + num
@@ -48,7 +48,7 @@ for pixels in pixel_width:
         print("Distance to HLS from target Image (X Coordinate):",x_y_distance[0],"km")
         print("Distance to HLS from target Image (Y Coordinate):",x_y_distance[1],"km")
     else:
-        print("WARNING! Distance is less than 50 km from target HLS")
+        print("WARNING! Distance is less than 15 km from target HLS")
 
 
 

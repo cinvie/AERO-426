@@ -55,7 +55,7 @@ int main() {
 	XY_distance.push_back(Y_distance);
 
 	for (double pixels : pixel_width_arr) {
-		if (image_distance > 50000) {
+		if (image_distance > 15000) {
 			double percent_change = (float((0.1 * pixels) / 100));
 			
 			//double num = rand() % (percent_change + percent_change + 1) - percent_change;
@@ -76,7 +76,7 @@ int main() {
 			cout << endl;
 		}
 		else {
-			cout << "Warning! Distance is less than 50km from target HLS." << endl;
+			cout << "Warning! Distance is less than 15km from target HLS." << endl;
 		}
 	}
 }
