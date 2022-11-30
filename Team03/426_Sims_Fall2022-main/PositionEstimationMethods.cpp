@@ -16,7 +16,7 @@ double Position_Estimation(double focal_length, double real_image_width, double 
 vector<double> xy_distance(double theta, double image_distance) {
 	double phi = (90 - theta) * (M_PI / 180);
 	double x_distance = abs(cos(phi) * image_distance);
-	double y_distance = abs(tan(phi) * image_distance);
+	double y_distance = abs(sin(phi) * image_distance);
 	vector<double> xy_distance;
 	xy_distance.push_back(x_distance);
 	xy_distance.push_back(y_distance);
