@@ -25,7 +25,7 @@ def Position_Estimation(Focal_Length, real_image_width, image_width_in_pixels):
 def xy_distance(theta,Image_distance):
     phi = (90-theta)*(np.pi/180)
     x_distance = abs(np.cos(phi)*Image_distance)
-    y_distance = abs(np.tan(phi)*Image_distance)
+    y_distance = abs(np.sin(phi)*Image_distance)
     return x_distance,y_distance
 
 
